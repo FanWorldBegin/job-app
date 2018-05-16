@@ -2,6 +2,14 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {addGun, minusGun, addGunAsync } from './index.redux.js'
 
+@connect(
+  //需要什么属性放到props里面
+  state => ({num: state}),
+  //需要什么方法放入props里面  自动dispach
+  {addGun, minusGun, addGunAsync}
+)
+
+
 class DealGun extends Component {
   constructor(props) {
     super(props)
@@ -27,12 +35,12 @@ class DealGun extends Component {
   }
 }
 
-//将state 传入number中
-const mapStatetoProps = (state) => {
-  return {num: state}
-}
+// //将state 传入number中
+// const mapStatetoProps = (state) => {
+//   return {num: state}
+// }
+//
+// const actionCreators = {addGun, minusGun, addGunAsync}
+//DealGun = connect(mapStatetoProps, actionCreators)(DealGun)
 
-const actionCreators = {addGun, minusGun, addGunAsync}
-
-DealGun = connect(mapStatetoProps, actionCreators)(DealGun)
 export default DealGun
